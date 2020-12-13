@@ -1,0 +1,45 @@
+color_from_left = dict(black=0,brown=1,red=2,orange=3,yellow=4,green=5,blue=6,violet=7,gray=8,white=9)
+multiply_color = dict(black=1,brown=10,red=10**2,orange=10**3,yellow=10**4,green=10**5,blue=10**6,violet=10**7,gray=10**8,white=10**9,gold=10**-1,silver=10**-2)
+tolerance = dict(black=1/100,brown=2/100,green=0.5/100,blue=0.25/100,violet=0.1/100,gray=0.05/100,gold=5/100,silver=10/100,non=20/100)
+band = int(input("inter number of band"))
+color1 = input("inter forth color from right\n")
+color2 = input("inter third color from right\n")
+mul_color = input("inter second color from right\n")
+tol_color = input("inter first color from right\n")
+
+if(band==4):
+
+    color1 = color_from_left[color1]
+    color2 = color_from_left[color2]*10
+    mul_color = multiply_color[mul_color]
+    tol_color = tolerance[tol_color]
+    value_resistors = (color1 + color2) * mul_color
+    print(value_resistors,"+ or -",tol_color )
+
+else:
+
+    color3 = input("inter fifth color from right\n")
+
+if(band==5):
+
+    color1 = color_from_left[color1]
+    color2 = color_from_left[color2]*10
+    color3 = color_from_left[color3]*100
+    mul_color = multiply_color[mul_color]
+    tol_color = tolerance[tol_color]
+    value_resistors = (color1 + color2 + color3) * mul_color
+    print(value_resistors,"+ or -",tol_color )
+
+else:
+    color4 = input("inter six color from right\n")
+
+if(band==6):
+
+    color1 = color_from_left[color1]
+    color2 = color_from_left[color2] * 10
+    color3 = color_from_left[color3] * 100
+    color4 = color_from_left[color4] * 1000
+    mul_color = multiply_color[mul_color]
+    tol_color = tolerance[tol_color]
+    value_resistors = (color1 + color2 + color3) * mul_color
+    print(value_resistors, "+ or -", tol_color)
