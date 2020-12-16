@@ -1,45 +1,115 @@
-color_from_left = dict(black=0,brown=1,red=2,orange=3,yellow=4,green=5,blue=6,violet=7,gray=8,white=9)
-multiply_color = dict(black=1,brown=10,red=10**2,orange=10**3,yellow=10**4,green=10**5,blue=10**6,violet=10**7,gray=10**8,white=10**9,gold=10**-1,silver=10**-2)
-tolerance = dict(black=1/100,brown=2/100,green=0.5/100,blue=0.25/100,violet=0.1/100,gray=0.05/100,gold=5/100,silver=10/100,non=20/100)
-band = int(input("inter number of band"))
-color1 = input("inter forth color from right\n")
-color2 = input("inter third color from right\n")
-mul_color = input("inter second color from right\n")
-tol_color = input("inter first color from right\n")
+class resistor:
 
-if(band==4):
+    global tolerance , color_from_left , multiply_color
 
-    color1 = color_from_left[color1]
-    color2 = color_from_left[color2]*10
-    mul_color = multiply_color[mul_color]
-    tol_color = tolerance[tol_color]
-    value_resistors = (color1 + color2) * mul_color
-    print(value_resistors,"+ or -",tol_color )
+    color_from_left = dict(black=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, gray=8, white=9)
+    multiply_color = dict(black=1, brown=10, red=10 ** 2, orange=10 ** 3, yellow=10 ** 4, green=10 ** 5, blue=10 ** 6,
+                          violet=10 ** 7, gray=10 ** 8, white=10 ** 9, gold=10 ** -1, silver=10 ** -2)
+    tolerance = dict(black=1 / 100, brown=2 / 100, green=0.5 / 100, blue=0.25 / 100, violet=0.1 / 100, gray=0.05 / 100,
+                     gold=5 / 100, silver=10 / 100, non=20 / 100)
 
-else:
+    def for_band_enter(self):
 
-    color3 = input("inter fifth color from right\n")
+        tol_color = input("inter first color from right\n")
+        mul_color = input("inter second color from right\n")
+        color2 = input("inter third color from right\n")
+        color1 = input("inter forth color from right\n")
+        return tol_color,mul_color,color2,color1
 
-if(band==5):
 
-    color1 = color_from_left[color1]
-    color2 = color_from_left[color2]*10
-    color3 = color_from_left[color3]*100
-    mul_color = multiply_color[mul_color]
-    tol_color = tolerance[tol_color]
-    value_resistors = (color1 + color2 + color3) * mul_color
-    print(value_resistors,"+ or -",tol_color )
+    def five_band_enter(self):
 
-else:
-    color4 = input("inter six color from right\n")
+        tol_color = input("inter first color from right\n")
+        mul_color = input("inter second color from right\n")
+        color2 = input("inter third color from right\n")
+        color1 = input("inter forth color from right\n")
+        color3 = input("inter fifth color from right\n")
+        return tol_color,mul_color,color2,color1,color3
 
-if(band==6):
+    def six_band_enter(self):
 
-    color1 = color_from_left[color1]
-    color2 = color_from_left[color2] * 10
-    color3 = color_from_left[color3] * 100
-    color4 = color_from_left[color4] * 1000
-    mul_color = multiply_color[mul_color]
-    tol_color = tolerance[tol_color]
-    value_resistors = (color1 + color2 + color3) * mul_color
-    print(value_resistors, "+ or -", tol_color)
+        tol_color = input("inter first color from right\n")
+        mul_color = input("inter second color from right\n")
+        color2 = input("inter third color from right\n")
+        color1 = input("inter forth color from right\n")
+        color3 = input("inter fifth color from right\n")
+        color4 = input("inter six color from right\n")
+        return tol_color,mul_color,color2,color1,color3,color4
+
+    def for_band_opiration(self,resistor_for_band_enter):
+
+        tol_color = tolerance[resistor_for_band_enter[0]]
+        mul_color = multiply_color[resistor_for_band_enter[1]]
+        color2 = color_from_left[resistor_for_band_enter[2]]
+        color1 = color_from_left[resistor_for_band_enter[3]]*10
+        color_meaning = (color1 + color2)*mul_color
+        return color_meaning,tol_color
+
+    def five_band_opiration(self,resistor_five_band_enter):
+
+        tol_color = tolerance[resistor_five_band_enter[0]]
+        mul_color = multiply_color[resistor_five_band_enter[1]]
+        color2 = color_from_left[resistor_five_band_enter[2]]
+        color1 = color_from_left[resistor_five_band_enter[3]]*10
+        color3 = color_from_left[resistor_five_band_enter[4]]*100
+        color_meaning = (color2 + color1 + color3)*mul_color
+        return color_meaning,tol_color
+
+    def six_band_opiration(self,resistor_six_band_enter):
+
+        tol_color = tolerance[resistor_six_band_enter[0]]
+        mul_color = multiply_color[resistor_six_band_enter[1]]
+        color2 = color_from_left[resistor_six_band_enter[2]]
+        color1 = color_from_left[resistor_six_band_enter[3]]*10
+        color3 = color_from_left[resistor_six_band_enter[4]]*100
+        color4 = color_from_left[resistor_six_band_enter[5]]*1000
+        color_meaning = (color1 + color2 + color4 + color3)*mul_color
+        return color_meaning,tol_color
+
+    def for_band_aoutput(self,for_band_opiration):
+
+        print(for_band_opiration[0],"+ or -",for_band_opiration[1])
+
+    def five_band_aoutput(self,five_band_opiration):
+
+        print(five_band_opiration[0],"+ or -",five_band_opiration[1])
+
+    def six_band_aoutput(self,six_band_opiration):
+
+        print(six_band_opiration[0],"+ or -",six_band_opiration[1])
+
+
+def main():
+    try:
+        band_number = int(input("number of band\n"))
+    except ValueError:
+        print("band must be number 4 or 5 or 6")
+        main()
+    if (band_number == 4):
+        try:
+            resistor_for_band_enter = resistor.for_band_enter(0)
+            for_band_opiration = resistor.for_band_opiration(0,resistor_for_band_enter)
+            resistor.for_band_aoutput(0,for_band_opiration)
+        except KeyError:
+            print("you enter the wrong color please recheck again")
+            main()
+    elif(band_number == 5):
+        try:
+            resistor_five_band_enter = resistor.five_band_enter(0)
+            five_band_opiration = resistor.five_band_opiration(0,resistor_five_band_enter)
+            resistor.five_band_aoutput(0, five_band_opiration)
+        except KeyError:
+            print("you enter the wrong color please recheck again")
+            main()
+    elif(band_number == 6):
+        try:
+            resistor_six_band_enter = resistor.six_band_enter(0)
+            six_band_opiration = resistor.six_band_opiration(0,resistor_six_band_enter)
+            resistor.six_band_aoutput(0,six_band_opiration)
+        except KeyError:
+            print("you enter the wrong color please recheck again")
+            main()
+    else:print("band must be number 4 or 5 or 6")
+if __name__ == '__main__':main()
+
+
